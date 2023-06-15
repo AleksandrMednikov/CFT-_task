@@ -126,7 +126,7 @@ def test_show_salary_for_employees():
     response = client.post("/salary/get_salary_for_curent_user", headers={"Cookie":сookies})
 
     assert response.json() == {'user': account_employee_name,
-                               'salaries': account_employee_salary,
+                               'salaries': str(account_employee_salary),
                                'date_of_increase': str(account_employee_name_date_of_increase)}
 
 

@@ -1,8 +1,8 @@
 """initial
 
-Revision ID: 67cd56493c88
+Revision ID: 293d4eae1d1a
 Revises: 
-Create Date: 2023-06-08 13:19:36.087399
+Create Date: 2023-06-09 15:21:24.342666
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '67cd56493c88'
+revision = '293d4eae1d1a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,7 +22,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('username', sa.String(), nullable=False),
-    sa.Column('role_id', sa.String(), nullable=False),
+    sa.Column('role_id', sa.Integer(), nullable=False),
     sa.Column('registered_at', sa.TIMESTAMP(), nullable=True),
     sa.Column('hashed_password', sa.String(), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=False),
@@ -34,7 +34,7 @@ def upgrade() -> None:
     op.create_table('salary',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('amount_of_payments', sa.Integer(), nullable=False),
+    sa.Column('amount_of_payments', sa.Float(), nullable=False),
     sa.Column('date_of_increase', sa.Date(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id'),

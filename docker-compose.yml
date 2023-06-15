@@ -1,0 +1,22 @@
+version: "2.18.1"
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_app
+    command: -p 5432
+    expose:
+      - 5432
+    env_file:
+      - .env-for-dep
+
+  app:
+    build:
+      context: .
+    env_file:
+      - .env-for-dep
+    container_name: fastapi_app
+    command: ["/CFT/docker/app.sh"]
+    ports:
+      - 9999:8000
+    depends_on:
+      - db
